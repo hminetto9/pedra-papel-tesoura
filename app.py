@@ -1,14 +1,56 @@
 import random
 
-print('Vamos jogar pedra, papel e tesoura !')
+# Mãos em ASCII art
+mao_pedra = """
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+"""
 
+mao_papel = """
+    _______
+---'   ____)____
+          ______)
+          _______)
+         _______)
+---.__________)
+"""
+
+mao_tesoura = """
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+"""
+
+# Função para obter a mão em ASCII art
+def get_mao_ascii(escolha):
+    if escolha == 'pedra':
+        return mao_pedra
+    elif escolha == 'papel':
+        return mao_papel
+    elif escolha == 'tesoura':
+        return mao_tesoura
+    return "" # Retorna uma string vazia se a escolha for inválida
+
+print('Vamos jogar pedra, papel e tesoura !')
 opcoes = ['pedra', 'papel', 'tesoura']
 escolha_cpu = random.choice(opcoes)
 
 escolha_player = str(input('Escolha Pedra / Papel / Tesoura: ')).lower()
 
-print(f'O computador escolheu: {escolha_cpu}, e você escolheu: {escolha_player}')
+print(f'\nO computador escolheu: {escolha_cpu}')
+print(get_mao_ascii(escolha_cpu))
 
+print(f'\nVocê escolheu: {escolha_player}')
+print(get_mao_ascii(escolha_player))
+
+# Lógica para determinar o vencedor
 if escolha_player == escolha_cpu:
     print('Empate!')
 elif (escolha_player == 'pedra' and escolha_cpu == 'tesoura') or \

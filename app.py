@@ -36,13 +36,14 @@ def get_mao_ascii(escolha):
         return mao_papel
     elif escolha == 'tesoura':
         return mao_tesoura
-    return "" # Retorna uma string vazia se a escolha for inválida
+    return ""
 
 print('Vamos jogar pedra, papel e tesoura !')
 opcoes = ['pedra', 'papel', 'tesoura']
 escolha_cpu = random.choice(opcoes)
 
-escolha_player = str(input('Escolha Pedra / Papel / Tesoura: ')).lower()
+# Corrigido: .strip() para remover espaços e .lower() para padronizar a entrada
+escolha_player = str(input('Escolha Pedra / Papel / Tesoura: ')).strip().lower()
 
 print(f'\nO computador escolheu: {escolha_cpu}')
 print(get_mao_ascii(escolha_cpu))
